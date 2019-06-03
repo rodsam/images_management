@@ -1,6 +1,6 @@
 #Your Gallery
 
-This website is build for exhibit great photo shoot by people. and visitor could comment on these photos.
+This website was built as an API to manage images stored in Google Cloud Storage for future works in the cloud according to a specific user.
 
 It's base on python3.6 and sqlite.
 
@@ -10,18 +10,18 @@ It's base on python3.6 and sqlite.
 │   ├── admin         // Admin routes for admin control
 │   ├── auth          // Auth routes for user login and register
 │   ├── main          // Main routes for front-side
-│   ├── static        // Static file like js, css, and img 
+│   ├── static        // Static file like js, css, and img
 │   ├── templates     // Templates file for jinja2
 │   ├── __init__.py   // init file for module app
-│   ├── models.py     // modle file of user, imgae, comment
+│   ├── models.py     // modle file of user, image, comment
 │   └── utils.py      // tool function file
 ├── app.db            // Database file
 ├── app.py            // Entrance of the project
 ├── auth.json         // Google Auth file
 ├── config.py         // Configure of project
-├── migrations        // Datebase migration file
+├── migrations        // Database migration file
 ├── README.md         // README file
-└── requirements.txt  // Requiements libs for project
+└── requirements.txt  // Requirements libs for project
 
 
 ### Dependencies
@@ -44,10 +44,10 @@ It's base on python3.6 and sqlite.
 
 ### Reference
 
-All the image used in this site comes from  [Unsplash](https://unsplash.com/@fotografierende)
+All the image used for testing in this site comes from  [Unsplash](https://unsplash.com/@fotografierende)
 
 
-### Deploy 
+### Deploy
 
 - Set up you Google cloud accout and your bucket, generate your auth.json then copy it to project directory.
 
@@ -60,5 +60,3 @@ All the image used in this site comes from  [Unsplash](https://unsplash.com/@fot
 - `flask run` to get the server run, and you could use `flask run -h YOUR_HOST_IP_or_0.0.0.0 -p YOUR_PORT` to run up wioth a custom config.
 
 - Open you broswer and input `localhost:5000` or `YOUR_HOST_IP:YOUR_PORT` to explore this site.
-
-
