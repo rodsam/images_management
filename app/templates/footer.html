@@ -1,0 +1,20 @@
+<footer class="text-muted py-3 mt-auto footer align-bottom" style="background: #fff">
+  <div class="container">
+    <p class="float-right">
+      <a href="#">Back to top</a>
+    </p>
+    <p>API created by 22055899 - Rodrigo Samuel Estigarribia</p>
+    <p>Current Time:<span id='current_time'></span></p>
+    {% if current_user.is_authenticated %}<p>Last seen you: {{ current_user.last_seen.strftime('%Y-%m-%d %H:%M:%S') }}</p>{% endif %}
+  </div>
+</footer>
+<script>
+  n =  new Date();
+  y = n.getFullYear();
+  m = n.getMonth() + 1;
+  d = n.getDate();
+  H = n.getHours();
+  M = n.getMinutes();
+  S = n.getSeconds();
+  $("#current_time").html(y +"-"+ m +"-" + d+ " " + H + ":" + M +":" + S);
+</script>

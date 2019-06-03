@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block style %}
+    <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet" type="text/css"/>
+{% endblock %}
+{% block content %}
+
+
+  <form method="post" action="{{ url_for('auth.regi') }}" class="form-login">
+    <h1 class="h3 mb-3 font-weight-normal">Please Register a Account</h1>
+      {{ form.username(class='form-control', type='input', placeholder='Username')}}
+      {{ form.password(class='form-control', type='password', placeholder='Password') }}
+      {{ form.password_check(class='form-control',id='password_check', type='password', placeholder='Password Check') }}
+      {{ form.email(class='form-control', type='email', placeholder='Email') }}
+      {{ form.address(class='form-control', type='text', placeholder='Address') }}
+    <div class="row">
+      {{ form.submit(class='btn btn-primary btn-block col-6') }}
+      <a href="{{ url_for('auth.login') }}" class=" col-6"><button class="btn btn-primary btn-block" type="button"> Login</button></a>
+    </div>
+
+  </form>
+
+{% endblock %}

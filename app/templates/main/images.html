@@ -1,0 +1,58 @@
+{% extends "base.html"%}
+{% include "header.html" %}
+{% block content %}
+  <main role="main">
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="padding: 50px;">
+      <h1 class="h2">Image Manager</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+          <a href="{{ url_for('main.add_image') }}" class="btn btn-sm btn-dark">Add Image</a>
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive" style="padding: 50px;">
+      <table class="table table-striped table-sm" >
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Img</th>
+            <th>Title</th>
+            <th>Uploader</th>
+            <th>Description</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if images %}
+            {% for image in images %}
+              <tr>
+                <td>{{ image.id }}</td>
+                <td width="30%"><img src="{{ image.file_path }}" width="300px"></td>
+                <td width="15%"><a href="{{ url_for('main.image', id= image.id) }}" >{{ image.title }}</a></td>
+                <td width="5%">{{ image.owner.username }}</td>
+                <td width="30%">{{ image.description }}</td>
+                <td>
+                  <a href="{{ url_for('main.download_image', id=image.id) }}" class="btn-sm" download>Download</a>
+                  <a href="{{ url_for('main.edit_image', id=image.id) }}" class="btn-sm">Edit</a>
+                  <a href="{{ url_for('main.delete_image', id=image.id) }}" class="btn-sm">Delete</a>
+                </td>
+              </tr>
+            {% endfor %}
+          {% else %}
+            <tr>
+              <td colspan="6" class="text-center">No data</td>
+            </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  {% include "footer.html" %}
+  {% block script %}
+    {{ super() }}
+
+  {% endblock %}
+
+{% endblock %}

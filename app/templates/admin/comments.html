@@ -1,0 +1,41 @@
+{% extends "admin/index.html" %}
+
+{% block main %}
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h2">Comment Manager</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+        <a href="{{ url_for('admin.add_comment', imgid= imgid)}}" class="btn btn-sm btn-dark">Add Comment</a>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Content</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if comments %}
+          {% for comment in comments %}
+            <tr>
+              <td>{{ comment.id }}</td>
+              <td width="25%">{{ comment.content }}</td>
+              <td>
+                <a href="{{ url_for('admin.edit_comment', id=comment.id) }}" class="btn-sm">Edit</a>
+                <a href="{{ url_for('admin.delete_comment', id=comment.id) }}" class="btn-sm">Delete</a>
+              </td>
+            </tr>
+          {% endfor %}
+        {% else %}
+          <tr>
+            <td colspan="3" class="text-center">No data</td>
+          </tr>
+        {% endif %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "base.html"%}
+{% include "header.html" %}
+{% block content %}
+  <main role="main">
+
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="padding: 50px">
+      <h1 class="h2">Add Image</h1>
+    </div>
+    <div class="col-md-8 order-md-1" style="padding: 50px">
+        <form class="form-group"  method="post" action="{{ action_url }}" enctype="multipart/form-data">
+          <div class="row mb-3">
+            <label for="title">Title</label>
+            <div class="input-group">
+              {{ form.title(class="form-control", placeholder="Title", type="text") }}
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="image">Image</label>
+            <div class="input-group">
+              {{ form.image(class="form-control", type= 'file') }}
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="description">Description</label>
+            <div class="input-group">
+              {{ form.description(class="form-control", placeholder="Description", type="textarea") }}
+            </div>
+          </div>
+          {{ form.submit(class="btn btn-info btn-md text-centre btn-block", value=btn_label) }}
+        </form>
+    </div>
+
+  </main>
+
+  {% include "footer.html" %}
+  {% block script %}
+    {{ super() }}
+
+  {% endblock %}
+
+{% endblock %}

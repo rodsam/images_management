@@ -1,0 +1,44 @@
+<header>
+  <div class="navbar navbar-dark bg-dark shadow-sm">
+    <div class="container d-flex justify-content-between">
+      <a href="{{ url_for('main.index') }}" class="navbar-brand d-flex align-items-center">
+          <strong>Your Gallery</strong>
+      </a>
+      {% if user.is_anonymous %}
+        <a href="{{ url_for('auth.login') }}">
+          <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span>Login</span>
+          </button>
+        </a>
+      {% else %}
+        <div>
+          <span class="text-light">
+            Welcome back, {{ user.username }} !
+          </span>
+          {% if user.is_admin %}
+            <a href="{{ url_for('admin.index') }}" style="font-size: 20px">
+            <button class="navbar-toggler" type="button">
+              <span>Admin page</span>
+            </button>
+          </a>
+          {% endif %}
+          <a href="{{ url_for('main.images') }}" style="font-size: 20px">
+            <button class="navbar-toggler" type="button">
+              <span>Manage images</span>
+            </button>
+          </a>
+          <a href="{{ url_for('main.edit_user') }}" style="font-size: 20px">
+            <button class="navbar-toggler" type="button">
+              <span>Change profile</span>
+            </button>
+          </a>
+          <a href="{{ url_for('auth.logout') }}" style="font-size: 20px">
+            <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+              <span>Logout</span>
+            </button>
+          </a>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</header>

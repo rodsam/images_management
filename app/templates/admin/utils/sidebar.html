@@ -1,0 +1,24 @@
+<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+  <div class="sidebar-sticky">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active" href="{{ url_for('admin.users') }}">
+          <span data-feather="home"></span>
+          User Manager<span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url_for('admin.images') }}">
+          <span data-feather="file"></span>
+          Image List
+        </a>
+      </li>
+{#      <li class="nav-item">#}
+{#        <a class="nav-link" href="{{ url_for('admin.comments') }}">#}
+{#          <span data-feather="file"></span>#}
+{#          Comment Chart#}
+{#        </a>#}
+{#      </li>#}
+    </ul>
+  </div>
+</nav>

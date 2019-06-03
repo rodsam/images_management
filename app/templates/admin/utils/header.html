@@ -1,0 +1,11 @@
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url_for('admin.index') }}">Admin for Gallery</a>
+  <div class="float-right">
+    <span class="text-light text-monospace">Welcome back, {{ current_user.username }}!</span>
+    <a href="{{ url_for('auth.logout') }}">
+      <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span>Logout</span>
+      </button>
+    </a>
+  </div>
+</nav>

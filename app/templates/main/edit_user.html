@@ -1,0 +1,47 @@
+{% extends "base.html"%}
+{% include "header.html" %}
+{% block content %}
+  <main role="main">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="padding: 50px">
+      <h1 class="h2">Edit User</h1>
+    </div>
+    <div class="col-md-8 order-md-1 justify-content-center" style="padding: 50px">
+    <form class="form-group"  method="post" action="{{ action_url }}">
+      <div class="row mb-3">
+        <label for="username">Username</label>
+        <div class="input-group">
+          {{ form.username(class="form-control", placeholder="Username", type="text") }}
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="password">Password</label>
+        <div class="input-group">
+          {{ form.password(class="form-control", placeholder="Password", type="password") }}
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <label for="email">Email</label>
+        <div class="input-group">
+          {{ form.email(class="form-control", placeholder="Email", type="email") }}
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="address">Address</label>
+        <div class="input-group">
+          {{ form.address(class="form-control", placeholder="Address", type="text") }}
+        </div>
+      </div>
+      {{ form.submit(class="btn btn-info btn-md text-centre btn-block", value=btn_label) }}
+    </form>
+
+  </main>
+
+  {% include "footer.html" %}
+  {% block script %}
+    {{ super() }}
+
+  {% endblock %}
+
+{% endblock %}

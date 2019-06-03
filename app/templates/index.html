@@ -1,0 +1,46 @@
+{% extends "base.html"%}
+{% include "header.html" %}
+{% block content %}
+  <main role="main">
+    <div class="container">
+      <div class="row">
+        {% if images|length > 0 %}
+          {% for image in  images%}
+          <div class="col-lg-6 col-md-12 col-sm-12" style="padding: 30px" >
+            <div class="card">
+              <div class="card-img-top">
+                <img src="{{ image.file_path }}" width="100%"/>
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{ image.description }}</p>
+                <div class="pull-right no-margin">
+                  <span class="d-block" style="font-size: 12px;">Post By: {{ image.owner.username }}</span>
+                  <span class="d-block" style="font-size: 12px;">Create At: {{ image.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <a href="{{ url_for('main.image', id= image.id) }}"><button type="button" class="btn btn-sm btn-outline-secondary">View</button></a>
+                    <a href="{{ url_for('main.download_image', id= image.id) }}" download><button type="button" class="btn btn-sm btn-outline-secondary">Download</button></a>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="justify-content-center col-12" style="padding: 50px" >
+           <h1>No Images Found</h1>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </main>
+
+  {% include "footer.html" %}
+  {% block script %}
+    {{ super() }}
+
+    {% endblock %}
+
+{% endblock %}

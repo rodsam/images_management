@@ -1,0 +1,71 @@
+{% extends "base.html"%}
+{% include "header.html" %}
+{% block content %}
+  <main role="main">
+    <div class="container justify-content-center">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-img-top">
+                <img src="{{ image.file_path }}" width="100%"/>
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{ image.description }}</p>
+              </div>
+              <div class="card-footer">
+                <a href="{{ url_for('main.download_image', id= image.id) }}" download><button type="button" class="btn btn-sm btn-outline-secondary">Download</button></a>
+                <div class="pull-right" style="font-size: 15px;">
+                  <div class="card-text d-block">Post by: {{ image.owner.username }}</div>
+                  <div class="card-text d-block">Create on: {{ image.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        {% for comment in comments %}
+          <div class="col-12" style="margin-top: 15px">
+            <div class="card">
+              <div class="card-body">
+                <p>{{ comment.content }}</p>
+              </div>
+              <div class="card-footer">
+                <div class="pull-right" style="font-size: 12px">
+                  <div class="card-text  d-block">Post by: {{ comment.post_by.username }}</div>
+                  <div class="card-text d-block">Create at: {{ comment.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+
+        <div class="col-12" style="margin-top: 15px">
+          <form class="form-group"  method="post" action="{{ action_url }}">
+
+            <div class="row mb-3">
+              <label for="content">Add your comment</label>
+              <div class="input-group">
+                {{ form.content(class="form-control", placeholder="Content", type="textarea", cols=10) }}
+              </div>
+            </div>
+            {{ form.submit(class="btn btn-info btn-md text-centre btn-block", value=btn_label) }}
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {% include "footer.html" %}
+  {% block script %}
+    {{ super() }}
+    <script>
+      function onSubmit(){
+        console.log('onSubmit')
+      }
+    </script>
+
+  {% endblock %}
+
+{% endblock %}
